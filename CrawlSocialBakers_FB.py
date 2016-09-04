@@ -62,13 +62,11 @@ def crawl_page(url):
                 write_csv((category, page_rank, page_name, page_id, page_fans, page_fpw))
                 # 파싱한 데이터를 csv 파일에 작성
 
-                return
-
         except Exception as err:
             print "Error in main() : " + str(err)
 
         finally:
-            print "Finished parsing %s" % category
+            print "Finished parsing %s %s" % (category, page_iter)
 
 
 def main():
