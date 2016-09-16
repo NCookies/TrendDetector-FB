@@ -10,12 +10,13 @@ import unicodecsv as csv
 
 
 csv_file = open("SocialBakers_FB_data.csv", "w+")
+column_list = []
 
 
-def write_csv(csv_list):
+def write_csv(csv_list, ret=None):
     try:
         writer = csv.writer(csv_file, encoding="utf-8", quoting=csv.QUOTE_NONNUMERIC)
-        writer.writerow(csv_list)
+        writer.writerows(csv_list)
 
     except Exception as err:
         print "error in CSV making. " + str(err)
@@ -59,7 +60,9 @@ def crawl_page(url):
                                    .replace("by week", "").strip().split())
                 # 페이지 일주일 간 팬 변화량
 
-                write_csv((category, page_rank, page_name, page_id, page_fans, page_fpw))
+                column = [category, page_rank, page_name, page_id, page_fans, page_fpw]
+                column_list.append(column)
+
                 # 파싱한 데이터를 csv 파일에 작성
 
         except Exception as err:
@@ -73,7 +76,7 @@ def main():
     try:
         column_names = ['Category', 'Rank', 'Page', 'Page ID', 'Fans', 'FPW']
         # FPW : Fans Per Week(일주일 간 팬 변화량)
-        write_csv(column_names)
+        write_csv(column_names, )
         print "Wrote Index in CSV"
 
         url_file = open("page_list.txt", "r")  # 미리 설정해놓은 url 링크 모음 파일
@@ -89,6 +92,7 @@ def main():
                 each_page += "/"
 
             crawl_page(each_page)  # 페이지 크롤링 함수
+            write_csv(column_list)
 
     except Exception as err:
         print "Error in main() : " + str(err)
