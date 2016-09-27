@@ -16,7 +16,12 @@ column_list = []
 def write_csv(csv_list, ret=None):
     try:
         writer = csv.writer(csv_file, encoding="utf-8", quoting=csv.QUOTE_NONNUMERIC)
-        writer.writerows(csv_list)
+
+        if ret == "column_name":
+            writer.writerow(csv_list)
+
+        else:
+            writer.writerows(csv_list)
 
     except Exception as err:
         print "error in CSV making. " + str(err)
@@ -76,11 +81,12 @@ def main():
     try:
         column_names = ['Category', 'Rank', 'Page', 'Page ID', 'Fans', 'FPW']
         # FPW : Fans Per Week(일주일 간 팬 변화량)
-        write_csv(column_names, )
+        write_csv(column_names, "column_name")
         print "Wrote Index in CSV"
 
         url_file = open("page_list.txt", "r")  # 미리 설정해놓은 url 링크 모음 파일
         page_list = url_file.readlines()
+        print page_list
 
         for each_page in page_list:  # url을 하나씩 가져옴
             each_page = each_page.strip()
