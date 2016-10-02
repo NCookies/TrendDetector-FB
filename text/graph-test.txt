@@ -1,0 +1,10 @@
+https://graph.facebook.com/284788688835/posts/?key=value&access_token=183403405424388|P0NKn-DWwcKfNpLB99nfKDLNTH0
+
+
+https://graph.facebook.com/284788688835/?fields=posts.since(1471577006){comments.limit(5){id,like_count},link}&access_token=183403405424388|P0NKn-DWwcKfNpLB99nfKDLNTH0
+
+
+https://graph.facebook.com/posts?ids={111668955554282},{284788688835}
+
+
+Note that while field filtering, field expansion, and limiting will work with these multiple-ID lookups, you will get an error if one of the objects does not have any of the requested fields. For example, if you were to lookup a Page and a User using this method, and then filter on fields=id,picture,gender the request would fail because Pages do not have a gender field.
