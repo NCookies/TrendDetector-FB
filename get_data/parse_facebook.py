@@ -26,6 +26,7 @@ def create_request(access_token, ids):
 def render_to_json(graph_url):
     json_data = None
     try:
+        print graph_url
         web_response = urllib2.urlopen(graph_url)
         readable_page = web_response.read()
         json_data = json.loads(readable_page)
@@ -44,7 +45,7 @@ def main():
 
     id_list = []
     graph_list = []
-    # category_list = ["brands", "celebrities", "community", "entertainment", "media", "place	", "society", "sport"]
+    # category_list = ["brands", "celebrities", "community", "entertainment", "media", "place", "society", "sport"]
 
     for row, i in zip(reader, range(0, 801)):
         if i == 0:

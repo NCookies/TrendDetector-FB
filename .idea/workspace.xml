@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d0735b8-3e1d-4c34-9fc9-e5f084c8421e" name="Default" comment="resolve the error by changing Morpheme Analyser from Hannanum to Komoran.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/get_data/get_keyword.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cloud.png" afterPath="$PROJECT_DIR$/cloud.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/get_data/api_data.json" afterPath="$PROJECT_DIR$/get_data/api_data.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/get_data/crawl_socialbakers_fb.py" afterPath="$PROJECT_DIR$/get_data/crawl_socialbakers_fb.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/get_data/page_list.txt" afterPath="$PROJECT_DIR$/get_data/page_list.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/get_data/parse_facebook.py" afterPath="$PROJECT_DIR$/get_data/parse_facebook.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/get_data/rank_pages.csv" afterPath="$PROJECT_DIR$/get_data/rank_pages.csv" />
     </list>
     <ignored path="SocialBakers_FB-master.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,11 +43,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="crawl_socialbakers_fb.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="crawl_socialbakers_fb.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/get_data/crawl_socialbakers_fb.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="108" column="0" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.5424">
+                  <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
                   <folding>
                     <element signature="e#25#39#0" expanded="true" />
                   </folding>
@@ -50,11 +55,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="rank_pages.csv" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/get_data/rank_pages.csv">
+          <file leaf-file-name="page_list.txt" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/get_data/page_list.txt">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.070500925">
-                  <caret line="2" column="45" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="45" />
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="7" column="79" selection-start-line="7" selection-start-column="79" selection-end-line="7" selection-end-column="79" />
                   <folding />
                 </state>
               </provider>
@@ -64,7 +69,7 @@
             <entry file="file://$PROJECT_DIR$/get_data/api_data.json">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="-0.0">
-                  <caret line="0" column="302" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="974087" />
+                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -84,11 +89,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="collect_data.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="collect_data.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/collect_data.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="160" column="0" selection-start-line="160" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.5984">
+                  <caret line="162" column="30" selection-start-line="162" selection-start-column="30" selection-end-line="162" selection-end-column="30" />
                   <folding>
                     <element signature="e#996#1011#0" expanded="true" />
                   </folding>
@@ -96,10 +101,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="get_keyword.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="get_keyword.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/get_data/get_keyword.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.44973546">
+                <state vertical-scroll-proportion="0.0">
                   <caret line="57" column="23" selection-start-line="57" selection-start-column="23" selection-end-line="57" selection-end-column="23" />
                   <folding>
                     <element signature="e#25#36#0" expanded="true" />
@@ -112,7 +117,7 @@
             <entry file="file://$PROJECT_DIR$/get_data/parse_facebook.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+                  <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
                   <folding>
                     <element signature="e#25#39#0" expanded="true" />
                   </folding>
@@ -151,13 +156,14 @@
         <option value="$PROJECT_DIR$/get_data/GetKeyword.py" />
         <option value="$PROJECT_DIR$/trend_analyze_many.py" />
         <option value="$PROJECT_DIR$/get_data/SocialBakers_FB_data.csv" />
-        <option value="$PROJECT_DIR$/get_data/rank_pages.csv" />
         <option value="$PROJECT_DIR$/config.cfg" />
-        <option value="$PROJECT_DIR$/get_data/parse_facebook.py" />
-        <option value="$PROJECT_DIR$/get_data/crawl_socialbakers_fb.py" />
         <option value="$PROJECT_DIR$/get_data/api_data.json" />
         <option value="$PROJECT_DIR$/collect_data.py" />
         <option value="$PROJECT_DIR$/get_data/get_keyword.py" />
+        <option value="$PROJECT_DIR$/get_data/page_list.txt" />
+        <option value="$PROJECT_DIR$/get_data/parse_facebook.py" />
+        <option value="$PROJECT_DIR$/get_data/rank_pages.csv" />
+        <option value="$PROJECT_DIR$/get_data/crawl_socialbakers_fb.py" />
       </list>
     </option>
   </component>
@@ -244,7 +250,7 @@
       </console-settings>
     </option>
   </component>
-  <component name="RunManager" selected="Python.collect_data">
+  <component name="RunManager" selected="Python.crawl_socialbakers_fb">
     <configuration default="false" name="GetKeyword (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -461,8 +467,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.collect_data" />
-        <item index="1" class="java.lang.String" itemvalue="Python.crawl_socialbakers_fb" />
+        <item index="0" class="java.lang.String" itemvalue="Python.crawl_socialbakers_fb" />
+        <item index="1" class="java.lang.String" itemvalue="Python.collect_data" />
         <item index="2" class="java.lang.String" itemvalue="Python.parse_facebook" />
         <item index="3" class="java.lang.String" itemvalue="Python.get_keyword" />
         <item index="4" class="java.lang.String" itemvalue="Python.GetKeyword (1)" />
@@ -517,11 +523,11 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299595" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34008098" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34008098" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3987854" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3987854" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -588,14 +594,6 @@
           <folding>
             <element signature="e#25#39#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/get_data/rank_pages.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -888,12 +886,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/get_data/crawl_socialbakers_fb.py">
+    <entry file="file://$PROJECT_DIR$/get_data/get_keyword.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="108" column="0" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
+          <caret line="57" column="23" selection-start-line="57" selection-start-column="23" selection-end-line="57" selection-end-column="23" />
           <folding>
-            <element signature="e#25#39#0" expanded="true" />
+            <element signature="e#25#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -901,45 +899,61 @@
     <entry file="file://$PROJECT_DIR$/get_data/api_data.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="302" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="974087" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/get_data/rank_pages.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.070500925">
-          <caret line="2" column="45" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/collect_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="160" column="0" selection-start-line="160" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
-          <folding>
-            <element signature="e#996#1011#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/get_data/parse_facebook.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/get_data/get_keyword.py">
+    <entry file="file://$PROJECT_DIR$/rank_pages.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44973546">
-          <caret line="57" column="23" selection-start-line="57" selection-start-column="23" selection-end-line="57" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/get_data/page_list.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="79" selection-start-line="7" selection-start-column="79" selection-end-line="7" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/get_data/crawl_socialbakers_fb.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5424">
+          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
           <folding>
-            <element signature="e#25#36#0" expanded="true" />
+            <element signature="e#25#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/get_data/rank_pages.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0304">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/collect_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5984">
+          <caret line="162" column="30" selection-start-line="162" selection-start-column="30" selection-end-line="162" selection-end-column="30" />
+          <folding>
+            <element signature="e#996#1011#0" expanded="true" />
           </folding>
         </state>
       </provider>

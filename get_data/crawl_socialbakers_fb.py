@@ -8,11 +8,7 @@ import re
 import unicodecsv as csv
 # csv 모듈
 
-import os
-from stat import S_IREAD, S_IRGRP, S_IROTH
-
-
-csv_file = open("rank_pages.csv", "w")
+csv_file = open("rank_pages.csv", "w+")
 column_list = []
 
 
@@ -69,7 +65,7 @@ def parse_page(url):
                 # 파싱한 데이터를 csv 파일에 작성
 
         except Exception as err:
-            print "Error in main() : " + str(err)
+            print "Error in parsing() : " + str(err)
 
         finally:
             print "Finished parsing %s %s" % (category, page_iter)
@@ -95,7 +91,8 @@ def crawl():
                 each_page += "/"
 
             parse_page(each_page)  # 페이지 크롤링 함수
-            write_csv(column_list)
+
+        write_csv(column_list)
 
         url_file.close()
         csv_file.close()
