@@ -114,35 +114,35 @@ else:
                          " It will be take long time. Please Wait")
             logger.info("Crawling...")
             crawl()
-            reader = csv.reader(open(args.input_file_names, "r"), delimiter=',')
+            reader = csv.reader(open(args.input_file_names, "rU"), delimiter=',')
 
         if reader:
                 logger.info("Success to open socialbakers crawled file!!")
 
         id_list = []
         args.api_json_file_name = dir_config["dir_name"] + "/" + api_config["api_file_name"]
+        unit = int(api_config["req_unit"])
         # category_list = ["brands", "celebrities", "community", "entertainment", "media", "place	", "society", "sport"]
 
-        with open(args.api_json_file_name, "a") as json_file:
+        with open(args.api_json_file_name, "w") as json_file:
             json_data = None
             json_file.seek(0)
             json_file.truncate()
             json_file.write('[')
 
             for row, i in zip(reader, range(1, 801)):
+                # if any(row):
+
                 id_list.append(row[3])
 
-                if i % 50 == 0:
+                if i % unit == 0:
                     req = create_request(crawl_config["access_token"], id_list)
                     json.dump(render_to_json(req), json_file)
 
                     if i == 800:
-                        continue
+                        break
 
                     json_file.write(',')
-
-                    # get_keyword(json_data, category_list[(i - 1) / 100])
-
                     id_list = []
 
         with open(args.api_json_file_name, "rb+") as json_file:
@@ -154,7 +154,7 @@ else:
             json_file.write(']')
 
         # get_data.ParseAPI 를 이용하여 데이터 얻어오고 json 형식으로 저장
-        message = parse_page(args.input_file_names, args.api_json_file_name)
+        message = parse_page(args.input_file_names, args.api_json_file_name, unit)
         tags = count_nouns(message)
         draw_cloud(tags, "cloud.png")
         print tags

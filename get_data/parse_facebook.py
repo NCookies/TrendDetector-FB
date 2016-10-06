@@ -4,9 +4,22 @@ import urllib2
 import json
 import time
 import unicodecsv as csv
-import os
+import logging
 
 from crawl_socialbakers_fb import crawl
+
+lvl = logging.INFO
+logger = logging.getLogger("parse_facebook")
+
+if not logger.handlers:
+    fmtr = logging.Formatter('%(asctime)s %(module)s:%(lineno)s - %(levelname)s - %(message)s')
+
+    hndlr = logging.StreamHandler()
+    hndlr.setFormatter(fmtr)
+    hndlr.setLevel(logging.DEBUG)
+
+    logger.addHandler(hndlr)
+    logger.setLevel(lvl)
 
 
 def create_request(access_token, ids):
@@ -25,8 +38,8 @@ def create_request(access_token, ids):
 
 def render_to_json(graph_url):
     json_data = None
+    global readable_page
     try:
-        print graph_url
         web_response = urllib2.urlopen(graph_url)
         readable_page = web_response.read()
         json_data = json.loads(readable_page)
@@ -34,6 +47,9 @@ def render_to_json(graph_url):
     except csv.Error:
         crawl()
         print "There was an error that cannot crawl"
+    except urllib2.HTTPError:
+        logger.error(readable_page)
+        return
 
     return json_data
 
@@ -58,7 +74,7 @@ def main():
 
             json_data = render_to_json(req)
             graph_list.append(json_data)
-            print graph_list
+            print graph_list.__len__()
 
             # get_keyword(json_data, category_list[(i - 1) / 100])
 
