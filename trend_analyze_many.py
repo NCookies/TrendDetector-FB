@@ -43,7 +43,6 @@ from gnip_trend_detection import models,utils
 
 
 def main():
-    #lvl = logging.DEBUG
     lvl = logging.INFO
 
     logger = logging.getLogger("rebin-analyze-plot")

@@ -157,7 +157,6 @@ else:
         message = parse_page(args.input_file_names, args.api_json_file_name, unit)
         tags = count_nouns(message)
         draw_cloud(tags, "cloud.png")
-        print tags
 
     # 별도의 스크립트를 만들어야 할 듯(일단은 보류)
     elif target == "timeline":
