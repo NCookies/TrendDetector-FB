@@ -48,7 +48,7 @@ def render_to_json(graph_url):
         crawl()
         print "There was an error that cannot crawl"
     except urllib2.HTTPError:
-        logger.error(readable_page)
+        logger.warning(readable_page)
         return
 
     return json_data

@@ -4,12 +4,28 @@ import json
 import unicodecsv as csv
 import webbrowser
 import random
-
+import time
 
 from konlpy.tag import Hannanum, Twitter, Komoran, Kkma
 from collections import Counter
 import pytagcloud  # requires Korean font support
 
+
+import argparse
+try:
+    import ConfigParser as configparser
+except ImportError:
+    import configparser
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument("-c", "--config-file", dest="config_file_name", default="../config.cfg")
+
+args = parser.parse_args()
+
+config = configparser.ConfigParser()
+config.read("../config.cfg")
+# parse_config = dict(config.items("parse"))
 
 r = lambda: random.randint(0, 255)
 color = lambda: (r(), r(), r())
@@ -35,14 +51,14 @@ def parse_page(csv_file, json_file, unit):
                     try:
                         basic = data[basic_index][key]["posts"]["data"][0]
                     except KeyError as err:
-                        print "In setting basic data : " + str(err)
+                        # print "In setting basic data : " + str(err)
                         continue
 
                     # 본문 내용 파싱
                     try:
                         message.append(unicode(basic["message"]))
                     except KeyError as err:
-                        print "In parsing article message : " + str(err)
+                        # print "In parsing article message : " + str(err)
                         continue
 
                     # 댓글 내용 파싱
@@ -51,7 +67,7 @@ def parse_page(csv_file, json_file, unit):
                         try:
                             message.append(unicode(basic["comments"]["data"][comment_count]))
                         except KeyError as err:
-                            print "In parsing comment message : " + str(err)
+                            # print "In parsing comment message : " + str(err)
                             break
 
                         comment_count += 1
@@ -62,13 +78,13 @@ def parse_page(csv_file, json_file, unit):
             # 22번째 데이터가 비어있음
             #  : graph api로 데이터를 요청했을 때 페이지 아이디가 존재하지 않아 오류가 발생했었음
             except AttributeError as err:
-                print err, basic_index
+                # print err, basic_index
                 basic_index += 1
                 continue
 
             # 더 이상 데이터가 존재하지 않으므로 루프를 종료
             except IndexError as err:
-                print err, basic_index
+                # print err, basic_index
                 break
 
         '''
@@ -93,14 +109,14 @@ def parse_page(csv_file, json_file, unit):
     return message
 
 
-def count_nouns(text_list, n_tags=50, multiplier=3):
+def count_nouns(text_list, stop_words_file, n_tags=50, multiplier=3):
     # h = Hannanum()
     # nouns = h.nouns(" ".join(text_list))
     k = Komoran()
     nouns = k.nouns(" ".join(text_list))
     count = Counter(nouns)
 
-    with open('get_data/stop_words.txt', 'r') as sw:
+    with open(stop_words_file, 'r') as sw:
         lines = sw.read().splitlines()
 
         for line in lines:
@@ -109,8 +125,24 @@ def count_nouns(text_list, n_tags=50, multiplier=3):
             except KeyError:
                 pass
 
-    # return count
-    return [{ 'color': color(), 'tag': n, 'size': c*multiplier } for n, c in count.most_common(n_tags)]
+    return count
+    # return [{ 'color': color(), 'tag': n, 'size': c*multiplier } for n, c in count.most_common(n_tags)]
+
+
+def append_csv(time, data):
+    with open('input_data_set.csv', 'w') as input_csv:
+        start_time = time
+        interval_duration = 3600  # parse_config["time_interval"]
+        counts = data.values()
+        keywords = [key for key in data.iterkeys()]
+
+
+        data_list = []
+        for index in range(0, len(counts)):
+            data_list.append([start_time, interval_duration, counts[index], keywords[index]])
+
+        writer = csv.writer(input_csv, encoding="utf-8", quoting=csv.QUOTE_NONNUMERIC)
+        writer.writerows(data_list)
 
 
 def parse_time_line():
@@ -124,9 +156,10 @@ def draw_cloud(tags, filename, font_name='Noto Sans CJK', size=(1280, 720)):
 
 def main():
     message = parse_page("rank_pages.csv", "api_data.json", 10)
-    tags = count_nouns(message)
+    tags = count_nouns(message, "stop_words.txt")
     print tags
-    draw_cloud(tags, "cloud.png")
+    # draw_cloud(tags, "cloud.png")
+    append_csv(time.strftime("%Y%m%d%H000000"), tags)
 
 
 if __name__ == "__main__":

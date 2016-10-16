@@ -33,6 +33,7 @@ import argparse
 import logging
 import sys
 import os
+import time
 
 import unicodecsv as csv
 import json
@@ -46,6 +47,7 @@ from get_data.get_keyword import parse_page
 from get_data.get_keyword import parse_time_line
 from get_data.get_keyword import count_nouns
 from get_data.get_keyword import draw_cloud
+from get_data.get_keyword import append_csv
 
 
 try:
@@ -73,6 +75,7 @@ parser.add_argument("-c", "--config-file", dest="config_file_name", default=None
 parser.add_argument("-i",
         dest="input_file_names", default=None, nargs="+",
         help="input file name(s) for CSV data to parse graph api")
+parser.add_argument("-time", dest="collect_time", default=time.strftime("%Y%m%d%H000000"))
 
 parser.add_argument("--page", dest="page", action="store_true", default=False, help="parse pages")
 parser.add_argument("--timeline", dest="timeline", action="store_true", default=False, help="parse timeline")
@@ -155,8 +158,9 @@ else:
 
         # get_data.ParseAPI 를 이용하여 데이터 얻어오고 json 형식으로 저장
         message = parse_page(args.input_file_names, args.api_json_file_name, unit)
-        tags = count_nouns(message)
-        draw_cloud(tags, "cloud.png")
+        counts = count_nouns(message, "get_data/stop_words.txt")
+        append_csv(args.collect_time, counts)
+        # draw_cloud(counts, "cloud.png")
 
     # 별도의 스크립트를 만들어야 할 듯(일단은 보류)
     elif target == "timeline":
