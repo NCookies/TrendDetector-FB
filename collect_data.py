@@ -56,128 +56,133 @@ except ImportError:
     import configparser
 
 
-lvl = logging.INFO
-logger = logging.getLogger("collect_data")
+def main():
+    lvl = logging.INFO
+    logger = logging.getLogger("collect_data")
 
-if not logger.handlers:
-    fmtr = logging.Formatter('%(asctime)s %(module)s:%(lineno)s - %(levelname)s - %(message)s')
+    if not logger.handlers:
+        fmtr = logging.Formatter('%(asctime)s %(module)s:%(lineno)s - %(levelname)s - %(message)s')
 
-    hndlr = logging.StreamHandler()
-    hndlr.setFormatter(fmtr)
-    hndlr.setLevel(logging.DEBUG)
+        hndlr = logging.StreamHandler()
+        hndlr.setFormatter(fmtr)
+        hndlr.setLevel(logging.DEBUG)
 
-    logger.addHandler(hndlr)
-    logger.setLevel(lvl)
+        logger.addHandler(hndlr)
+        logger.setLevel(lvl)
 
-# get input, output, and config file naems from cmd-line argument parsing
-parser = argparse.ArgumentParser()
-parser.add_argument("-c", "--config-file", dest="config_file_name", default=None)
-parser.add_argument("-i",
-        dest="input_file_names", default=None, nargs="+",
-        help="input file name(s) for CSV data to parse graph api")
-parser.add_argument("-time", dest="collect_time", default=time.strftime("%Y%m%d%H000000"))
+    # get input, output, and config file naems from cmd-line argument parsing
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-c", "--config-file", dest="config_file_name", default=None)
+    parser.add_argument("-i",
+            dest="input_file_names", default=None, nargs="+",
+            help="input file name(s) for CSV data to parse graph api")
+    parser.add_argument("-time", dest="collect_time", default=time.strftime("%Y%m%d%H000000"))
 
-parser.add_argument("--page", dest="page", action="store_true", default=False, help="parse pages")
-parser.add_argument("--timeline", dest="timeline", action="store_true", default=False, help="parse timeline")
+    parser.add_argument("--page", dest="page", action="store_true", default=False, help="parse pages")
+    parser.add_argument("--timeline", dest="timeline", action="store_true", default=False, help="parse timeline")
 
-args = parser.parse_args()
+    args = parser.parse_args()
 
-# parse config file, which contains model and rule info
-if args.config_file_name is not None and not os.path.exists(args.config_file_name):
-    logger.error("cmd-line argument 'config_file_name' must reference a valid config file, or config.cfg must exist")
-    sys.exit(1)
-else:
-    if args.config_file_name is None and os.path.exists("config.cfg"):
-        args.config_file_name = "config.cfg"
-    logger.info('Using {} for configuration.'.format(args.config_file_name))
+    # parse config file, which contains model and rule info
+    if args.config_file_name is not None and not os.path.exists(args.config_file_name):
+        logger.error("cmd-line argument 'config_file_name' must reference a valid config file, or config.cfg must exist")
+        sys.exit(1)
+    else:
+        if args.config_file_name is None and os.path.exists("config.cfg"):
+            args.config_file_name = "config.cfg"
+        logger.info('Using {} for configuration.'.format(args.config_file_name))
 
-    config = configparser.ConfigParser()
-    config.read(args.config_file_name)
-    target = config.get("crawling", "target")
-    crawl_config = dict(config.items("crawling"))
-    api_config = dict(config.items("api_data"))
-    dir_config = dict(config.items("dir"))
+        config = configparser.ConfigParser()
+        config.read(args.config_file_name)
+        target = config.get("crawling", "target")
+        crawl_config = dict(config.items("crawling"))
+        api_config = dict(config.items("api_data"))
+        dir_config = dict(config.items("dir"))
 
-    # rank_pages 파일이 존재해야 함
-    if target == "page":
-        if args.input_file_names is not None and os.path.exists("get_data/rank_pages.csv"):
-            logger.error("cmd-line argument 'input_file_names' must reference a valid existing file, "
-                         "or rank_pages.csv must exist")
-            sys.exit(1)
-        else:
-            if args.input_file_names is None and os.path.exists("get_data/rank_pages.csv"):
-                args.input_file_names = dir_config["dir_name"] + "/" + crawl_config["file_name"]
-            logger.info('Using {} for input file.'.format(args.input_file_names))
+        # rank_pages 파일이 존재해야 함
+        if target == "page":
+            if args.input_file_names is not None and os.path.exists("get_data/rank_pages.csv"):
+                logger.error("cmd-line argument 'input_file_names' must reference a valid existing file, "
+                             "or rank_pages.csv must exist")
+                sys.exit(1)
+            else:
+                if args.input_file_names is None and os.path.exists("get_data/rank_pages.csv"):
+                    args.input_file_names = dir_config["dir_name"] + "/" + crawl_config["file_name"]
+                logger.info('Using {} for input file.'.format(args.input_file_names))
 
-        try:
-            reader = csv.reader(open(args.input_file_names, "r"), delimiter=',')
+            try:
+                reader = csv.reader(open(args.input_file_names, "r"), delimiter=',')
 
-        except IOError:
-            logger.error("There is no rank page csv file. Crawl socialbakers and Retry to open."
-                         " It will be take long time. Please Wait")
-            logger.info("Crawling...")
-            crawl()
-            reader = csv.reader(open(args.input_file_names, "rU"), delimiter=',')
+            except IOError:
+                logger.error("There is no rank page csv file. Crawl socialbakers and Retry to open."
+                             " It will be take long time. Please Wait")
+                logger.info("Crawling...")
+                crawl()
+                reader = csv.reader(open(args.input_file_names, "rU"), delimiter=',')
 
-        if reader:
-                logger.info("Success to open socialbakers crawled file!!")
+            if reader:
+                    logger.info("Success to open socialbakers crawled file!!")
 
-        id_list = []
-        args.api_json_file_name = dir_config["dir_name"] + "/" + api_config["api_file_name"]
-        unit = int(api_config["req_unit"])
-        # category_list = ["brands", "celebrities", "community", "entertainment", "media", "place	", "society", "sport"]
+            id_list = []
+            args.api_json_file_name = dir_config["dir_name"] + "/" + api_config["api_file_name"]
+            unit = int(api_config["req_unit"])
+            # category_list = ["brands", "celebrities", "community", "entertainment", "media", "place	", "society", "sport"]
 
-        with open(args.api_json_file_name, "w") as json_file:
-            json_data = None
-            json_file.seek(0)
-            json_file.truncate()
-            json_file.write('[')
-
-            for row, i in zip(reader, range(1, 801)):
-                # if any(row):
-
-                id_list.append(row[3])
-
-                if i % unit == 0:
-                    req = create_request(crawl_config["access_token"], id_list)
-                    json.dump(render_to_json(req), json_file)
-
-                    if i == 800:
-                        break
-
-                    json_file.write(',')
-                    id_list = []
-
-        with open(args.api_json_file_name, "rb+") as json_file:
-            json_file.seek(-1, os.SEEK_END)
-            if json_file.read() == ',':
-                json_file.seek(-1, os.SEEK_END)
+            with open(args.api_json_file_name, "w") as json_file:
+                json_data = None
+                json_file.seek(0)
                 json_file.truncate()
+                json_file.write('[')
 
-            json_file.write(']')
+                for row, i in zip(reader, range(1, 801)):
+                    # if any(row):
 
-        # get_data.ParseAPI 를 이용하여 데이터 얻어오고 json 형식으로 저장
-        message = parse_page(args.input_file_names, args.api_json_file_name, unit)
-        counts = count_nouns(message, "get_data/stop_words.txt")
-        append_csv(args.collect_time, counts)
-        # draw_cloud(counts, "cloud.png")
+                    id_list.append(row[3])
 
-    # 별도의 스크립트를 만들어야 할 듯(일단은 보류)
+                    if i % unit == 0:
+                        req = create_request(crawl_config["access_token"], id_list)
+                        json.dump(render_to_json(req), json_file)
+
+                        if i == 800:
+                            break
+
+                        json_file.write(',')
+                        id_list = []
+
+            with open(args.api_json_file_name, "rb+") as json_file:
+                json_file.seek(-1, os.SEEK_END)
+                if json_file.read() == ',':
+                    json_file.seek(-1, os.SEEK_END)
+                    json_file.truncate()
+
+                json_file.write(']')
+
+            # get_data.ParseAPI 를 이용하여 데이터 얻어오고 json 형식으로 저장
+            message = parse_page(args.input_file_names, args.api_json_file_name, unit)
+            counts = count_nouns(message, "get_data/stop_words.txt")
+            append_csv(args.collect_time, counts)
+            # draw_cloud(counts, "cloud.png")
+
+        # 별도의 스크립트를 만들어야 할 듯(일단은 보류)
+        elif target == "timeline":
+            pass
+            # 여기도 마찬가지, 타임라인의 데이터를 긁어와서 json 파일로 저장하자.
+
+    # open("./get_data/api_data.json")  # 이 파일이 존재할 것임
+    # 여기서 json 파일이 어떤 것을 크롤링 한 것인지 체크
+
+
+    '''
+    - config 파일에서 target을 무엇으로 할지 정해야함
+        * 여기서 config 파일이 존재하지 않는다면 프로그램 종료
+    '''
+
+    if target == "page":
+        pass
+
     elif target == "timeline":
         pass
-        # 여기도 마찬가지, 타임라인의 데이터를 긁어와서 json 파일로 저장하자.
-
-# open("./get_data/api_data.json")  # 이 파일이 존재할 것임
-# 여기서 json 파일이 어떤 것을 크롤링 한 것인지 체크
 
 
-'''
-- config 파일에서 target을 무엇으로 할지 정해야함
-    * 여기서 config 파일이 존재하지 않는다면 프로그램 종료
-'''
-
-if target == "page":
-    pass
-
-elif target == "timeline":
-    pass
+if __name__ == "__main__":
+    main()
