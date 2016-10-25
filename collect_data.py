@@ -159,9 +159,9 @@ def main():
 
             # get_data.ParseAPI 를 이용하여 데이터 얻어오고 json 형식으로 저장
             message = parse_page(args.input_file_names, args.api_json_file_name, unit)
-            counts = count_nouns(message, "get_data/stop_words.txt")
+            counts, tags = count_nouns(message, "get_data/stop_words.txt")
             append_csv(args.collect_time, counts)
-            # draw_cloud(counts, "cloud.png")
+            draw_cloud(tags, "cloud.png")
 
         # 별도의 스크립트를 만들어야 할 듯(일단은 보류)
         elif target == "timeline":

@@ -109,7 +109,7 @@ def parse_page(csv_file, json_file, unit):
     return message
 
 
-def count_nouns(text_list, stop_words_file, n_tags=50, multiplier=3):
+def count_nouns(text_list, stop_words_file, n_tags=50, multiplier=2):
     # h = Hannanum()
     # nouns = h.nouns(" ".join(text_list))
     k = Komoran()
@@ -125,7 +125,8 @@ def count_nouns(text_list, stop_words_file, n_tags=50, multiplier=3):
             except KeyError:
                 pass
 
-    return count
+    return count, \
+           [{'color': color(), 'tag': n, 'size': c*multiplier } for n, c in count.most_common(n_tags)]
     # return [{ 'color': color(), 'tag': n, 'size': c*multiplier } for n, c in count.most_common(n_tags)]
 
 
@@ -139,6 +140,8 @@ def append_csv(time, data):
 
         data_list = []
         for index in range(0, len(counts)):
+            if counts[index] < 5:
+                continue
             data_list.append([start_time, interval_duration, counts[index], keywords[index]])
 
         writer = csv.writer(input_csv, encoding="utf-8", quoting=csv.QUOTE_NONNUMERIC)
