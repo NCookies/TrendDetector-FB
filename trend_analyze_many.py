@@ -47,7 +47,7 @@ def main():
 
     logger = logging.getLogger("rebin-analyze-plot")
     if logger.handlers == []:
-        fmtr = logging.Formatter('%(asctime)s %(module)s:%(lineno)s - %(levelname)s - %(message)s')
+        fmtr = logging  .Formatter('%(asctime)s %(module)s:%(lineno)s - %(levelname)s - %(message)s')
         hndlr = logging.StreamHandler()
         hndlr.setFormatter(fmtr)
         hndlr.setLevel(logging.DEBUG)

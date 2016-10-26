@@ -101,14 +101,22 @@ def main():
 
         # rank_pages 파일이 존재해야 함
         if target == "page":
-            if args.input_file_names is not None and os.path.exists("get_data/rank_pages.csv"):
+            # 인자로 input_file_name 이 전달되었고 그 파일이 존재할 때
+            if args.input_file_names is not None and not os.path.exists(args.input_file_names):
                 logger.error("cmd-line argument 'input_file_names' must reference a valid existing file, "
                              "or rank_pages.csv must exist")
                 sys.exit(1)
+            # 인자로 input_file_name 이 전달되지 않았고 해당 파일이 존재할 때
             else:
-                if args.input_file_names is None and os.path.exists("get_data/rank_pages.csv"):
-                    args.input_file_names = dir_config["dir_name"] + "/" + crawl_config["file_name"]
+                try:
+                    rank_page = dir_config["dir_name"] + "/get_data/" + args.input_file_names
+                except TypeError:
+                    rank_page = dir_config["dir_name"] + "/get_data/" + "rank_pages.csv"
+
+                if args.input_file_names is None and os.path.exists(rank_page):
+                    args.input_file_names = rank_page
                 logger.info('Using {} for input file.'.format(args.input_file_names))
+            # 그 외의 경우에는 인자로 전달받은 것을 그대로 사용
 
             try:
                 reader = csv.reader(open(args.input_file_names, "r"), delimiter=',')
@@ -124,12 +132,14 @@ def main():
                     logger.info("Success to open socialbakers crawled file!!")
 
             id_list = []
-            args.api_json_file_name = dir_config["dir_name"] + "/" + api_config["api_file_name"]
+            args.api_json_file_name = dir_config["dir_name"] + "/get_data/" + api_config["api_file_name"]
+
+            # graph api 로 id를 몇 개씩 요청할지
+            # 수가 커질수록 프로그램의 속도는 빨라지지만
+            # 오류로 인해 많은 데이터가 누락될 가능성이 높아짐
             unit = int(api_config["req_unit"])
-            # category_list = ["brands", "celebrities", "community", "entertainment", "media", "place	", "society", "sport"]
 
             with open(args.api_json_file_name, "w") as json_file:
-                json_data = None
                 json_file.seek(0)
                 json_file.truncate()
                 json_file.write('[')
@@ -159,7 +169,7 @@ def main():
 
             # get_data.ParseAPI 를 이용하여 데이터 얻어오고 json 형식으로 저장
             message = parse_page(args.input_file_names, args.api_json_file_name, unit)
-            counts, tags = count_nouns(message, "get_data/stop_words.txt")
+            counts, tags = count_nouns(message, dir_config["dir_name"] + "/get_data/stop_words.txt")
             append_csv(args.collect_time, counts)
             draw_cloud(tags, "cloud.png")
 
