@@ -87,25 +87,6 @@ def parse_page(csv_file, json_file, unit):
                 # print err, basic_index
                 break
 
-        '''
-        for row in reader:
-            try:
-                if data[basic_index] is None:
-                    basic_index += 1
-                    continue
-
-                basic = data[basic_index][row[3]]  # ["posts"]["data"][0]
-                # print row[3], basic_index
-
-                if int(row[1]) % unit == 0:
-                    basic_index += 1
-            # json 데이터에 페이지 아이디가 존재하지 않을 때
-            except KeyError:
-                i += 1
-
-        print i
-        '''
-
     return message
 
 
@@ -130,8 +111,8 @@ def count_nouns(text_list, stop_words_file, n_tags=50, multiplier=2):
     # return [{ 'color': color(), 'tag': n, 'size': c*multiplier } for n, c in count.most_common(n_tags)]
 
 
-def append_csv(time, data):
-    with open('input_data_set.csv', 'w') as input_csv:
+def append_csv(time, data, data_file_name):
+    with open(data_file_name, 'w') as input_csv:
         start_time = time
         interval_duration = 3600  # parse_config["time_interval"]
         counts = data.values()

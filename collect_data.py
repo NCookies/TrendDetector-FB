@@ -109,12 +109,12 @@ def main():
             # 인자로 input_file_name 이 전달되지 않았고 해당 파일이 존재할 때
             else:
                 try:
-                    rank_page = dir_config["dir_name"] + "/get_data/" + args.input_file_names
+                    rank_file = dir_config["dir_name"] + "/get_data/" + args.input_file_names
                 except TypeError:
-                    rank_page = dir_config["dir_name"] + "/get_data/" + "rank_pages.csv"
+                    rank_file = dir_config["dir_name"] + "/get_data/" + "rank_pages.csv"
 
-                if args.input_file_names is None and os.path.exists(rank_page):
-                    args.input_file_names = rank_page
+                if args.input_file_names is None and os.path.exists(rank_file):
+                    args.input_file_names = rank_file
                 logger.info('Using {} for input file.'.format(args.input_file_names))
             # 그 외의 경우에는 인자로 전달받은 것을 그대로 사용
 
@@ -170,7 +170,7 @@ def main():
             # get_data.ParseAPI 를 이용하여 데이터 얻어오고 json 형식으로 저장
             message = parse_page(args.input_file_names, args.api_json_file_name, unit)
             counts, tags = count_nouns(message, dir_config["dir_name"] + "/get_data/stop_words.txt")
-            append_csv(args.collect_time, counts)
+            append_csv(args.collect_time, counts, dir_config["dir_name"] + 'input_data_set.csv')
             draw_cloud(tags, "cloud.png")
 
         # 별도의 스크립트를 만들어야 할 듯(일단은 보류)
