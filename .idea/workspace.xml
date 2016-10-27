@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d0735b8-3e1d-4c34-9fc9-e5f084c8421e" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/input_data_set.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rank_pages.csv" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/collect_data.py" afterPath="$PROJECT_DIR$/collect_data.py" />
     </list>
     <ignored path="SocialBakers_FB-master.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,8 +52,8 @@
           <file leaf-file-name="trend_detector.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/trend_detector.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.46588486">
-                  <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+                <state vertical-scroll-proportion="0.42537314">
+                  <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
                   <folding />
                 </state>
               </provider>
@@ -65,8 +66,8 @@
           <file leaf-file-name="collect_data.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/collect_data.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.46908316">
-                  <caret line="174" column="0" selection-start-line="174" selection-start-column="0" selection-end-line="174" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.5906183">
+                  <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
                   <folding>
                     <element signature="e#996#1011#0" expanded="true" />
                   </folding>
@@ -82,16 +83,6 @@
                   <folding>
                     <element signature="e#25#36#0" expanded="true" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="input_data_set.csv" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/input_data_set.csv">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-                  <folding />
                 </state>
               </provider>
             </entry>
@@ -583,7 +574,13 @@
       <option name="project" value="LOCAL" />
       <updated>1477531148014</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="change draw_cloud to comment">
+      <created>1477531259347</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1477531259347</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -654,7 +651,8 @@
     <MESSAGE value="update stop_words.txt" />
     <MESSAGE value="update config and modify about absolute path in collect_data.py" />
     <MESSAGE value="modify parameter of append_csv function" />
-    <option name="LAST_COMMIT_MESSAGE" value="modify parameter of append_csv function" />
+    <MESSAGE value="change draw_cloud to comment" />
+    <option name="LAST_COMMIT_MESSAGE" value="change draw_cloud to comment" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1021,14 +1019,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/input_data_set.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/trend_analyze_many.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1043,14 +1033,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rank_pages.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1102,16 +1084,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/trend_detector.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46588486">
-          <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.42537314">
+          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/collect_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46908316">
-          <caret line="174" column="0" selection-start-line="174" selection-start-column="0" selection-end-line="174" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.5906183">
+          <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
           <folding>
             <element signature="e#996#1011#0" expanded="true" />
           </folding>
