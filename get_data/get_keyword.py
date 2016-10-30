@@ -112,7 +112,7 @@ def count_nouns(text_list, stop_words_file, n_tags=50, multiplier=2):
 
 
 def append_csv(time, data, data_file_name):
-    with open(data_file_name, 'w') as input_csv:
+    with open(data_file_name, 'a') as input_csv:
         start_time = time
         interval_duration = 3600  # parse_config["time_interval"]
         counts = data.values()

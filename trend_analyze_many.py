@@ -27,7 +27,7 @@ import logging
 import sys
 import os
 import copy
-import csv
+import unicodecsv as csv
 import fileinput
 import collections
 import multiprocessing as mp
